@@ -1,0 +1,31 @@
+{
+  "name": "whatapop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sparrest": "node ./node_modules/node-sparrest/node-sparrest.js",
+    "lite": "lite-server",
+    "start": "concurrently 'npm run sparrest' 'npm run lite'"  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edugonzlz/whatapop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edugonzlz/whatapop/issues"
+  },
+  "homepage": "https://github.com/edugonzlz/whatapop#readme",
+  "devDependencies": {
+    "concurrently": "^2.1.0",
+    "lite-server": "^2.2.0",
+    "node-sparrest": "0.0.10"
+  },
+  "dependencies": {
+    "@angular/router": "^0.2.0",
+    "angular": "^1.5.6",
+    "ng-image-picker": "0.0.1",
+    "skeleton-css": "^2.0.4"
+  }
+}
