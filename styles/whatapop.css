@@ -1,7 +1,7 @@
 /*Barra de navegacion*/
 .navigation-bar div{
     display: inline-block;
-    padding: 10px;
+    margin: 10px;
 }
 .navigation-bar {
     background: #b31e00;
@@ -22,15 +22,20 @@
     margin-bottom: 100px;
 }
 
-.footer{
-    align-content: center;
-    margin-top: 500px;
-    border: 1px solid grey;
-}
+/*.footer{*/
+    /*align-content: center;*/
+    /*margin-top: 500px;*/
+    /*border: 1px solid grey;*/
+/*}*/
 
 
 
 /*Pantalla de productos*/
+
+.productsContainer {
+    background-color: lightgrey;
+    padding: 20px 100px 200px 100px;
+}
 
 .categories li {
     display: inline-block;
@@ -43,6 +48,7 @@
     border: 1px solid grey;
     border-radius: 10px;
     box-shadow: 5px 5px 10px grey;
+    background-color: whitesmoke;
 }
 
 .productImage {
@@ -85,8 +91,4 @@
     margin-top: 30px;
     margin-bottom: 30px;
     box-shadow: 5px 5px 10px grey;
-}
-
-.footer div{
-    alignment: center;
 }

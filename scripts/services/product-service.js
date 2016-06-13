@@ -16,9 +16,9 @@ angular.module("whatapop")
 
         };
 
-        this.getImageUrl = function (imagesUrl) {
+        this.getImageUrl = function (imageUrl) {
 
-            return imagesUrl ? (Settings.urlServidor + "/" + imagesUrl) : undefined;
+            return imageUrl ? (Settings.urlServidor + "/" + imageUrl) : undefined;
 
         };
 

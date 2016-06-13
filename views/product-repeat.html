@@ -1,11 +1,15 @@
 <div>
-
     <div>
-        <img ng-src="{{ $ctrl.getImageUrl(product.photos[0]) }}">
-    </div>
-    <div>
-        {{ product.name }}
-        {{ product.price | currency}}
+        <img ng-src="{{ ::getImageUrl(product.photos[0]) }}"
+             class="productImage">
     </div>
 
+    <div class="productInfo">
+        {{ ::product.name }}
+        <br/>
+        <strong>
+            {{ ::product.price | currency: "€" }}
+        </strong>
+
+    </div>
 </div>

@@ -9,13 +9,13 @@
 
         <input type="text"
                ng-model="search"
-               placeholder="buscar..."
+               placeholder="Buscar producto..."
                class="search-box">
     </div>
 
     <div>
         <select name="" id="categorieSelector" ng-model="categoryFilter">
-            <option value="">--- Categorias ---</option>
+            <option value=""> Todas las Categorias </option>
             <option ng-repeat="category in $ctrl.categories"
                     value="{{ category.name }}">{{ category.name }}</option>
         </select>
@@ -23,7 +23,7 @@
 
     <div>
         <select name="" id="orderSelector" ng-model="orderBy">
-            <option value="">--- Ordenar por ---</option>
+            <option value=""> Ordenar por </option>
             <option value="name">Nombre</option>
             <option value="price">Precio</option>
             <option value="state">Estado</option>
@@ -33,24 +33,39 @@
 
 </nav>
 
-<div class="container">
+<div class="productsContainer">
 
-    <div ng-repeat="product in $ctrl.products | filter: search | filter: categoryFilter | orderBy: orderBy "
-         class="productBox"
-         ng-link="['ProductDetail', { id: product.id }]">
-        <div>
-            <img ng-src="{{ ::$ctrl.getImageUrl(product.photos[0]) }}"
-                 class="productImage">
-        </div>
+    <product-repeat ng-repeat="product in $ctrl.products
+                    | filter: search
+                    | filter: categoryFilter
+                    | orderBy: orderBy "
+                    product="product"
+                    class="productBox"
+                    ng-link="['ProductDetail', { id: product.id }]">
 
-        <div class="productInfo">
-            {{ ::product.name }}
-            <br/>
-            <strong>
-                {{ ::product.price | currency: "€" }}
-            </strong>
+    </product-repeat>
 
-        </div>
-    </div>
+
+    <!--VERSION SIN DIRECTIVA-->
+
+    <!--<div ng-repeat="product in $ctrl.products | filter: search | filter: categoryFilter | orderBy: orderBy "-->
+         <!--class="productBox"-->
+         <!--ng-link="['ProductDetail', { id: product.id }]">-->
+
+        <!--<div>-->
+            <!--<img ng-src="{{ ::$ctrl.getImageUrl(product.photos[0]) }}"-->
+                 <!--class="productImage">-->
+        <!--</div>-->
+
+        <!--<div class="productInfo">-->
+            <!--{{ ::product.name }}-->
+            <!--<br/>-->
+            <!--<strong>-->
+                <!--{{ ::product.price | currency: "€" }}-->
+            <!--</strong>-->
+
+        <!--</div>-->
+
+    <!--</div>-->
 
 </div>

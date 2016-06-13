@@ -2,31 +2,22 @@
  * Created by Edu on 10/6/16.
  */
 angular.module("whatapop")
-    .directive("productRepeat", function () {
+    .directive("productRepeat", function (ProductService) {
         
         return {
-            bindings: {
-                product: "@",
-                $router: "<"
-            },
+
+            restrict: "AE",
 
             templateUrl: "views/product-repeat.html",
 
-            controller: ["ProductService", function (ProductService) {
+            scope: {
+                product: "<"
+            },
 
-                var self = this;
+            link: function (scope) {
 
-                //Nos suscribimos a un hook de inicio
-                self.$onInit = function () {
-
-                    ProductService.getProducts()
-                        .then(function (response) {
-                            self.products = response.data;
-                        });
-                };
-
-                self.getImageUrl = ProductService.getImageUrl;
-
-            }]
+                //Implementar el click a la vista general de producto?
+                scope.getImageUrl = ProductService.getImageUrl;
+            }
         };
     });
