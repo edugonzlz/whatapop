@@ -39,15 +39,15 @@
          class="productBox"
          ng-link="['ProductDetail', { id: product.id }]">
         <div>
-            <img ng-src="{{ $ctrl.getImageUrl(product.photos[0]) }}"
+            <img ng-src="{{ ::$ctrl.getImageUrl(product.photos[0]) }}"
                  class="productImage">
         </div>
 
         <div class="productInfo">
-            {{ product.name }}
+            {{ ::product.name }}
             <br/>
             <strong>
-                {{ product.price | currency: "€" }}
+                {{ ::product.price | currency: "€" }}
             </strong>
 
         </div>
