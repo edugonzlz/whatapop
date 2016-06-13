@@ -1,0 +1,79 @@
+<nav class="navigation-bar">
+
+    <div>
+        <a ng-link="['Products']">Whatapop</a>
+
+    </div>
+
+    <div>
+
+        <input type="text"
+               ng-model="product.filterProduct"
+               placeholder="buscar..."
+               class="search-box">
+        <button ng-link="['Products', { name: product.filterProduct }]"
+                class="searchButton">
+            buscar
+        </button>
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="five columns">
+
+        <div class="imageBox">
+            <img ng-src="{{ $ctrl.getImageUrl($ctrl.product.photos[0])}}"/>
+        </div>
+
+    </div>
+
+    <div class="seven columns">
+        <div class="ficha">
+
+            <div>
+                <h4>{{ $ctrl.product.name }}</h4>
+                <h2>{{ $ctrl.product.price | currency: "€"}}</h2>
+                <p>{{ $ctrl.product.description}}</p>
+            </div>
+
+            <div>
+                {{ $ctrl.product.published_date | date : 'd MMMM yyyy'}}
+                <br/>
+                {{ $ctrl.product.state}}
+                <br/>
+                {{ $ctrl.product.category.name }}
+            </div>
+
+        </div>
+
+        <div class="ficha">
+
+            <div class="avatarBox">
+                <table>
+                    <thead>
+                    Publicado por
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <img ng-src="{{ $ctrl.getImageUrl($ctrl.product.seller.avatar)}}"
+                                 class="avatar"/>
+                        </td>
+                        <td class="nick">
+                            {{ $ctrl.product.seller.nick}}
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

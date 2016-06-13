@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <base href="/">
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Whatapop</title>
+
+    <link rel="stylesheet" href="node_modules/skeleton-css/css/normalize.css">
+    <link rel="stylesheet" href="node_modules/skeleton-css/css/skeleton.css">
+    <link rel="stylesheet" href="styles/whatapop.css">
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/@angular/router/angular1/angular_1_router.js"></script>
+    <script src="node_modules/ng-image-picker/ng-image-picker.js"></script>
+
+    <script src="scripts/app.js"></script>
+
+    <script src="scripts/components/root.js"></script>
+    <script src="scripts/components/products.js"></script>
+    <script src="scripts/components/product-detail.js"></script>
+    <script src="scripts/components/search-box.js"></script>
+
+    <script src="scripts/directives/product-repeat.js"></script>
+
+    <script src="scripts/services/product-service.js"></script>
+    <script src="scripts/services/category-service.js"></script>
+
 </head>
-<body>
+<body ng-app="whatapop">
+
+    <root></root>
 
 </body>
 </html>

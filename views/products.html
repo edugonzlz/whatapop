@@ -1,0 +1,56 @@
+<nav class="navigation-bar">
+
+    <div>
+        <a ng-link="['Products']">Whatapop</a>
+
+    </div>
+
+    <div>
+
+        <input type="text"
+               ng-model="search"
+               placeholder="buscar..."
+               class="search-box">
+    </div>
+
+    <div>
+        <select name="" id="categorieSelector" ng-model="categoryFilter">
+            <option value="">--- Categorias ---</option>
+            <option ng-repeat="category in $ctrl.categories"
+                    value="{{ category.name }}">{{ category.name }}</option>
+        </select>
+    </div>
+
+    <div>
+        <select name="" id="orderSelector" ng-model="orderBy">
+            <option value="">--- Ordenar por ---</option>
+            <option value="name">Nombre</option>
+            <option value="price">Precio</option>
+            <option value="state">Estado</option>
+            <option value="published_date">Fecha</option>
+        </select>
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div ng-repeat="product in $ctrl.products | filter: search | filter: categoryFilter | orderBy: orderBy "
+         class="productBox"
+         ng-link="['ProductDetail', { id: product.id }]">
+        <div>
+            <img ng-src="{{ $ctrl.getImageUrl(product.photos[0]) }}"
+                 class="productImage">
+        </div>
+
+        <div class="productInfo">
+            {{ product.name }}
+            <br/>
+            <strong>
+                {{ product.price | currency: "€" }}
+            </strong>
+
+        </div>
+    </div>
+
+</div>
