@@ -2,23 +2,23 @@
  * Created by Edu on 10/6/16.
  */
 angular.module("whatapop")
-    .service("ProductService", function ($http) {
+    .service("ProductService", function ($http, Settings) {
 
         this.getProducts = function () {
 
-            return $http.get("http://localhost:8000/api/products");
+            return $http.get(Settings.urlServidor + Settings.endpointProducts);
 
         };
 
         this.getProductById = function (productId) {
 
-            return $http.get("http://localhost:8000/api/products/" + productId);
+            return $http.get(Settings.urlServidor + Settings.endpointProducts + "/" + productId);
 
         };
 
         this.getImageUrl = function (imagesUrl) {
 
-            return imagesUrl ? ("http://localhost:8000" + "/" + imagesUrl) : undefined;
+            return imagesUrl ? (Settings.urlServidor + "/" + imagesUrl) : undefined;
 
         };
 

@@ -3,17 +3,17 @@
  */
 
 angular.module("whatapop")
-    .service("CategoryService", function ($http) {
+    .service("CategoryService", function ($http, Settings) {
 
         this.getCategories = function () {
 
-            return $http.get("http://localhost:8000/api/categories");
+            return $http.get(Settings.urlServidor + Settings.endpointCategories);
 
         };
 
         this.getCategory = function (categoryId) {
 
-            return $http.get("http://localhost:8000/api/categories/" + categoryId);
+            return $http.get(Settings.urlServidor + Settings.endpointCategories + categoryId);
 
         };
 
