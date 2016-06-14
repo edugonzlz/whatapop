@@ -10,7 +10,7 @@ angular.module("whatapop")
 
     templateUrl: "views/product-detail.html",
     
-    controller:["ProductService", function (ProductService) {
+    controller:["ProductService", "$sce",  function (ProductService, $sce) {
 
         var self = this;
 
@@ -21,10 +21,12 @@ angular.module("whatapop")
             ProductService.getProductById(productId)
                 .then(function (response) {
                     self.product = response.data;
+                    self.description = $sce.trustAsHtml(self.product.description);
 
                 });
         };
         
         self.getImageUrl = ProductService.getImageUrl;
+
     }]
 });

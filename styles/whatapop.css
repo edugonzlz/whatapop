@@ -22,17 +22,9 @@
     margin-bottom: 100px;
 }
 
-/*.footer{*/
-    /*align-content: center;*/
-    /*margin-top: 500px;*/
-    /*border: 1px solid grey;*/
-/*}*/
-
-
-
 /*Pantalla de productos*/
 
-.productsContainer {
+.fondoWeb {
     background-color: lightgrey;
     padding: 20px 100px 200px 100px;
 }
@@ -53,7 +45,7 @@
 
 .productImage {
     width: 180px;
-    border-radius: 9px 10px 0 0;
+    border-radius: 9px 9px 0 0;
     border-bottom: 1px dotted grey;
 }
 
@@ -63,26 +55,6 @@
 }
 
 /*Pantalla de detalle de producto*/
-.avatar {
-    width: 50px;
-    border-radius: 20px;
-    border: 1px solid black;
-}
-
-.imageBox {
-    width: 300px;
-    padding: 20px;
-    border: 1px solid grey;
-    border-radius: 10px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    box-shadow: 5px 5px 10px grey;
-}
-
-.imageBox img {
-    width: 300px;
-}
-
 .ficha {
     width: 400px;
     padding: 20px;
@@ -91,4 +63,26 @@
     margin-top: 30px;
     margin-bottom: 30px;
     box-shadow: 5px 5px 10px grey;
+    background-color: whitesmoke;
+
+}
+.imageBox {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 5px 5px 10px grey;
+    background-color: whitesmoke;
+}
+
+.imageBox img {
+    width: 300px;
+}
+
+.avatar {
+    width: 50px;
+    border-radius: 20px;
+    border: 1px solid black;
 }
