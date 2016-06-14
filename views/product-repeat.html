@@ -5,7 +5,11 @@
     </div>
 
     <div class="productInfo">
-        {{ ::product.name }}
+        <strong>{{ ::product.name | OnlyName }}</strong>
+        <br/>
+
+        <small>-- {{ ::product.name | OnlyInfo }} --</small>
+
         <br/>
         <strong>
             {{ ::product.price | currency: "€" }}

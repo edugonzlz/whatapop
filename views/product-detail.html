@@ -35,7 +35,10 @@
             <div class="ficha">
 
                 <div>
-                    <h4>{{ ::$ctrl.product.name }}</h4>
+                    <h4>{{ ::$ctrl.product.name | OnlyName }}
+
+                    </h4>
+                    <h7>-- {{ ::$ctrl.product.name | OnlyInfo }} --</h7>
                     <h2>{{ ::$ctrl.product.price | currency: "€"}}</h2>
                     <p ng-bind-html="$ctrl.description"></p>
                 </div>
