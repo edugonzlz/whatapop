@@ -10,7 +10,7 @@ angular.module("whatapop")
 
         templateUrl: "views/products.html",
 
-        controller: ["ProductService", "CategoryService", function (ProductService, CategoryService) {
+        controller: ["ProductService", "CategoryService", "LocService", function (ProductService, CategoryService, LocService) {
             
             var self = this;
             
@@ -25,7 +25,12 @@ angular.module("whatapop")
                 CategoryService.getCategories()
                     .then(function (response) {
                         self.categories = response.data;
-                    })
+                    });
+                
+                LocService.getLoc()
+                    .then(function (response) {
+                        self.myposition = response;
+                    });
             };
 
             self.getImageUrl = ProductService.getImageUrl;
