@@ -21,7 +21,7 @@ angular.module("whatapop")
                     ProductService.getProducts()
                         .then(function (response) {
                             self.products = response.data;
-                            // self.usersInDistance = DistanceService.getUsers(self.products);
+                            self.usersInDistance = DistanceService.getUsers(self.products);
                         });
 
                     CategoryService.getCategories()

@@ -1,8 +1,8 @@
 /**
  * Created by Edu on 17/6/16.
  */
-angular.module("whatapop", ["dahr.ng-haversine"])
-    .service("DistanceService", function (UserService, LocService) {
+angular.module("whatapop")
+    .service("DistanceService", function (UserService, LocService, $haversine) {
 
         this.getUsers = function (products) {
 
