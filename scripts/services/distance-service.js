@@ -15,9 +15,10 @@ angular.module("whatapop")
                     var usersInDistance = [];
 
                     for (var product in products){
-
+                        
+                        var id = product.seller.id;
                         //Obtenemos el usuario desde el producto y su posicion
-                        UserService.getUserById(product.seller.id)
+                        UserService.getUserById(id)
                             .then(function (user) {
 
                                 var userLoc = {"latitude": user.latitude,
@@ -32,9 +33,7 @@ angular.module("whatapop")
                                 }
                             })
                     }
-
                     return usersInDistance;
-
                 });
         }
     });
