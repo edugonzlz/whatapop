@@ -1,7 +1,6 @@
 /**
  * Created by Edu on 13/6/16.
  */
-
 angular.module("whatapop")
     .service("CategoryService", function ($http, Settings) {
 

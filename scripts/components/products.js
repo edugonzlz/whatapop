@@ -1,7 +1,6 @@
 /**
  * Created by Edu on 10/6/16.
  */
-
 angular.module("whatapop")
     .component("products", {
 

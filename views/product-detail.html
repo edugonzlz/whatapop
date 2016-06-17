@@ -5,19 +5,6 @@
 
     </div>
 
-    <div>
-
-        <!--<input type="text"-->
-               <!--ng-model="searchBox"-->
-               <!--placeholder="Buscar producto..."-->
-               <!--class="search-box">-->
-        <!--<button ng-link="['Products', { name: searchBox }]"-->
-                <!--class="searchButton">-->
-            <!--buscar-->
-        <!--</button>-->
-
-    </div>
-
 </nav>
 
 <div class="fondoWeb">
@@ -42,7 +29,6 @@
                     <h2>{{ ::$ctrl.product.price | currency: "€"}}</h2>
                     <p ng-bind-html="$ctrl.description"></p>
                 </div>
-                <!--{{ ::$ctrl.product.description}}-->
                 <div>
                     {{ ::$ctrl.product.published_date | date : 'd MMMM yyyy'}}
                     <br/>

@@ -6,7 +6,6 @@ angular.module("whatapop")
         return function (nameComplete) {
 
             var split = nameComplete.split("[");
-            var onlyName = split[0];
             var extra = split[1];
 
             return extra.slice(0, (extra.length - 1));
