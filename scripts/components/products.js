@@ -10,30 +10,30 @@ angular.module("whatapop")
 
         templateUrl: "views/products.html",
 
-        controller: ["ProductService", "CategoryService", "LocService", function (ProductService, CategoryService, LocService) {
-            
-            var self = this;
-            
-            //Nos suscribimos a un hook de inicio
-            self.$onInit = function () {
-                
-                ProductService.getProducts()
-                    .then(function (response) {
-                       self.products = response.data;
-                    });
-                
-                CategoryService.getCategories()
-                    .then(function (response) {
-                        self.categories = response.data;
-                    });
-                
-                LocService.getLoc()
-                    .then(function (response) {
-                        self.myposition = response;
-                    });
-            };
+        controller: ["ProductService", "CategoryService", "LocService", "DistanceService",
+            function (ProductService, CategoryService, LocService, DistanceService) {
 
-            self.getImageUrl = ProductService.getImageUrl;
+                var self = this;
 
-        }]
+                //Nos suscribimos a un hook de inicio
+                self.$onInit = function () {
+
+                    ProductService.getProducts()
+                        .then(function (response) {
+                            self.products = response.data;
+                            // self.usersInDistance = DistanceService.getUsers(self.products);
+                        });
+
+                    CategoryService.getCategories()
+                        .then(function (response) {
+                            self.categories = response.data;
+                        });
+
+                };
+
+                self.getImageUrl = ProductService.getImageUrl;
+
+
+
+            }]
     });
