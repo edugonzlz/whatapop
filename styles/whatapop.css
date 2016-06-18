@@ -54,6 +54,10 @@
     padding: 2px;
 }
 
+.soloVentaText {
+    color: whitesmoke;
+}
+
 /*Pantalla de detalle de producto*/
 .ficha {
     width: 400px;

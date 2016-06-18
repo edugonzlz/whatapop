@@ -22,19 +22,25 @@
             <div class="ficha">
 
                 <div>
-                    <h4>{{ ::$ctrl.product.name | OnlyName }}
+                    <h2>{{ ::$ctrl.product.name | OnlyName }}
 
-                    </h4>
+                    </h2>
+                    <small>{{ ::$ctrl.product.category.name }}</small>
+
                     <h7>-- {{ ::$ctrl.product.name | OnlyInfo }} --</h7>
-                    <h2>{{ ::$ctrl.product.price | currency: "€"}}</h2>
+                    </br>
+                    </br>
+
+                    <h4>{{ ::$ctrl.product.price | currency: "€"}}</h4>
                     <p ng-bind-html="$ctrl.description"></p>
                 </div>
                 <div>
-                    {{ ::$ctrl.product.published_date | date : 'd MMMM yyyy'}}
+                    Fecha de publicación
+                    <strong>{{ ::$ctrl.product.published_date | date : 'd MMMM yyyy'}}</strong>
                     <br/>
-                    {{ ::$ctrl.product.state}}
-                    <br/>
-                    {{ ::$ctrl.product.category.name }}
+                    Estado del producto (en venta / vendido):
+                    <strong>{{ ::$ctrl.product.state}}</strong>
+
                 </div>
 
             </div>

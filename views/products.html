@@ -8,13 +8,13 @@
     <div>
 
         <input type="text"
-               ng-model="search"
-               placeholder="Buscar producto..."
+               ng-model="search.name"
+               placeholder="Buscar por nombre..."
                class="search-box">
     </div>
 
     <div>
-        <select name="" id="categorieSelector" ng-model="categoryFilter">
+        <select name="" id="categorieSelector" ng-model="categoryFilter.category.name">
             <option value=""> Todas las Categorias </option>
             <option ng-repeat="category in $ctrl.categories"
                     value="{{ category.name }}">{{ category.name }}</option>
@@ -26,9 +26,17 @@
             <option value=""> Ordenar por </option>
             <option value="name">Nombre</option>
             <option value="price">Precio</option>
-            <option value="state">Estado (en venta / vendido)</option>
             <option value="published_date">Fecha de publicación</option>
         </select>
+    </div>
+
+    <div>
+        <input type="checkbox" ng-model="state.state"
+               ng-true-value="'selling'
+               "ng-false-value="''">
+        <span class="soloVentaText"> Solo los que esten en venta</span>
+
+        </option>
     </div>
 
 </nav>
@@ -38,7 +46,8 @@
     <product-repeat ng-repeat="product in $ctrl.products
                     | filter: search
                     | filter: categoryFilter
-                    | orderBy: orderBy "
+                    | orderBy: orderBy
+                    | filter: state"
                     product="product"
                     class="productBox"
                     ng-link="['ProductDetail', { id: product.id }]">
