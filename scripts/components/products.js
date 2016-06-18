@@ -22,6 +22,8 @@ angular.module("whatapop")
                         .then(function (response) {
                             self.products = response.data;
 
+                            self.distance(self.products);
+
                         });
 
                     CategoryService.getCategories()
@@ -35,24 +37,23 @@ angular.module("whatapop")
 
                 self.getImageUrl = ProductService.getImageUrl;
 
-                self.distance = function (element, index, products) {
-                    return new Promise(function (resolve, reject) {
-                        async.each(products, function (product, callback) {
-                            DistanceService.distanceFromProduct(product).then(function (meters) {
-                                console.log("metrosssss: ", meters);
-                                if (meters < 1000){
-                                    return resolve (true);
+                self.distanceForProducts = function (products) {
+                    async.each(products, function (product, callback) {
+                        DistanceService.distanceFromProduct(product)
+                            .then(function (meters) {
+                                if (meters < 5000){
+                                    console.log(product.name + " esta a metros: " + meters);
                                 }
                                 callback();
                             })
-                        },function (err) {
-                            if (err){
-                                return reject (console.log("Algo ha fallado calculando distancias", err));
-                            } else {
-                                return resolve (console.log("Todo bien calculando distancias"));
-                            }
-                        })
+                    },function (err) {
+                        if (err){
+                            return console.log("Algo ha fallado calculando distancias", err);
+                        } else {
+                            return console.log("Todo bien calculando distancias");
+                        }
                     })
-                }
+                };
+                
             }]
     });

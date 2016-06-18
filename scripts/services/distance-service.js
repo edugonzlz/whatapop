@@ -28,6 +28,29 @@ angular.module("whatapop")
 
         };
 
+        this.distanceForProducts = function (products) {
+
+            var productsNearly = [];
+
+            async.each(products, function (product, callback) {
+                distanceFromProduct(product)
+                    .then(function (meters) {
+                        if (meters < 5000){
+                            console.log(product.name + " esta a metros: " + meters);
+                            productsNearly.push(product);
+                        }
+                        callback();
+                    })
+            },function (err) {
+                if (err){
+                    return console.log("Algo ha fallado calculando distancias", err);
+                } else {
+                    console.log("Todo bien calculando distancias")
+                    return productsNearly;
+                }
+            })
+        };
+
         this.productLocation = function(product){
 
                 UserService.getUserById(product.seller.id)
