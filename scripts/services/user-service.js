@@ -11,8 +11,8 @@ angular.module("whatapop")
         };
 
         this.getUserById = function (userId) {
-
-            return $http.get(Settings.urlServidor + Settings.endpointUsers + userId);
+            
+            return $http.get(Settings.urlServidor + Settings.endpointUsers + "/" + userId);
 
         };
 

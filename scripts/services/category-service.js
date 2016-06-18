@@ -12,7 +12,7 @@ angular.module("whatapop")
 
         this.getCategory = function (categoryId) {
 
-            return $http.get(Settings.urlServidor + Settings.endpointCategories + categoryId);
+            return $http.get(Settings.urlServidor + Settings.endpointCategories + "/" + categoryId);
 
         };
 

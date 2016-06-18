@@ -4,36 +4,50 @@
 angular.module("whatapop")
     .service("DistanceService", function (UserService, LocService, $haversine) {
 
-        this.getUsers = function (products) {
+        this.distanceFromProduct = function (product) {
+            
+            return new Promise (function (resolve, reject) {
+                //Obtenemos nuestra posicion
+                LocService.getLoc()
+                    .then(function (mylocation) {
 
-            //Obtenemos nuestra posicion
-            LocService.getLoc()
-                .then(function (response) {
+                        UserService.getUserById(product.seller.id)
+                            .then(function (response) {
 
-                    var myposition = response;
-
-                    var usersInDistance = [];
-
-                    for (let product of products){
-                        
-                        var id = product.seller.id;
-                        //Obtenemos el usuario desde el producto y su posicion
-                        UserService.getUserById(id)
-                            .then(function (user) {
+                                var user = response.data;
 
                                 var userLoc = {"latitude": user.latitude,
                                     "longitude": user.longitude };
 
-                                //Caculamos la distancia entre las posiciones
-                                var distance = $haversine.distance(myposition, userLoc);
+                                return resolve ($haversine.distance(mylocation, userLoc));
+                            });
 
-                                //Probamos con una distancia larga, mas tarde recogemos de la vista
-                                if (distance < 200000){
-                                    usersInDistance.push(user.id);
-                                }
-                            })
-                    }
-                    return usersInDistance;
-                });
-        }
+                    });
+            });
+            
+
+        };
+
+        this.productLocation = function(product){
+
+                UserService.getUserById(product.seller.id)
+                    .then(function (response) {
+
+                        var user = response.data;
+
+                        return resolve ({"latitude": user.latitude,
+                            "longitude": user.longitude });
+                    })
+        };
+        
+        this.userLocation = function (user) {
+            
+            return {"latitude": user.latitude,
+                "longitude": user.longitude };
+        };
+        
+        this.distanceTwoPoints = function (position1, position2) {
+            
+            return $haversine.distance(position1, position2);
+        };
     });
