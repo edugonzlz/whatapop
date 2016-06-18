@@ -16,6 +16,13 @@
                 <img ng-src="{{ ::$ctrl.getImageUrl($ctrl.product.photos[0])}}"/>
             </div>
 
+            <div class="fichaFav">
+                <button ng-click=$ctrl.makeFavorite()
+                        ng-class="{active: $ctrl.fav}">
+                    Favorito
+                </button>
+            </div>
+
         </div>
 
         <div class="seven columns">

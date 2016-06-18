@@ -24,9 +24,38 @@ angular.module("whatapop")
                     self.description = $sce.trustAsHtml(self.product.description);
 
                 });
+
+            //Recuperamos el color del favorito
+            var id = productId;
+            self.fav = localStorage.getItem(id);
+            console.log(self.fav);
+
         };
-        
+
         self.getImageUrl = ProductService.getImageUrl;
+        
+        self.makeFavorite = function () {
+            if (typeof(Storage) !== "undefined") {
+
+                var id = self.product.id;
+
+                //Recogemos el valor de nuestro id
+                var fav = localStorage.getItem(id);
+
+                if (fav === "fav"){
+                    //Si ya era favvorito Eliminamos favorito
+                    localStorage.removeItem(id);
+                    self.fav = false;
+                    console.log(localStorage.getItem(id));
+                }
+                if (fav !== "fav"){
+                    //Si no es favorito lo guardamos como favorito
+                    localStorage.setItem(id, "fav");
+                    self.fav = true;
+                    console.log(localStorage.getItem(id));
+                }
+            }
+        }
 
     }]
 });
