@@ -4,13 +4,13 @@
     margin: 10px;
 }
 .navigation-bar {
-    background: #b31e00;
+    background: crimson;
 }
 
 .navigation-bar a{
     text-decoration: none;
-    font-size: 30px;
-    color: #CCCCCC;
+    font-size: 35px;
+    color: #00AA00;
 }
 
 .searchButton {
@@ -23,8 +23,10 @@
 }
 
 .appName {
+    margin-right: 30px;
     font-family: 'Gloria Hallelujah', cursive;
-    font-size: 30px;;
+    font-size: 30px;
+    text-shadow:  2px 2px yellow;
 }
 
 
