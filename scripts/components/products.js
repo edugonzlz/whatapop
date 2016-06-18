@@ -22,7 +22,7 @@ angular.module("whatapop")
                         .then(function (response) {
                             self.products = response.data;
 
-                            self.distance(self.products);
+                            self.distanceForProducts(self.products);
 
                         });
 
