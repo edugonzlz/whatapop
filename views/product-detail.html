@@ -31,7 +31,7 @@
                 <br/>
                 <div>
                     <button ng-click=$ctrl.makeFavorite()
-                            ng-class="{active: $ctrl.favColor}">
+                            ng-class="{favButton: $ctrl.favColor}">
                         Favorito
                     </button>
                 </div>
@@ -53,7 +53,7 @@
                     </br>
                     </br>
 
-                    <h4>{{ ::$ctrl.product.price | currency: "€"}}</h4>
+                    <h4 class="price">{{ ::$ctrl.product.price | currency: "€"}}</h4>
                     <p ng-bind-html="$ctrl.description"></p>
                 </div>
 

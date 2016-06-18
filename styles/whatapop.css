@@ -29,6 +29,10 @@
     text-shadow:  2px 2px yellow;
 }
 
+.price {
+    color: #00AA00;
+}
+
 
 /*Pantalla de productos*/
 
@@ -111,9 +115,6 @@
     border: 1px solid black;
 }
 
-.active {
-    background: orange;
-}
-.inactive {
-    background: transparent;
+.favButton {
+    background: #FEEB32;
 }
