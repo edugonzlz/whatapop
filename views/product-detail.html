@@ -17,10 +17,22 @@
             </div>
 
             <div class="fichaFav">
-                <button ng-click=$ctrl.makeFavorite()
-                        ng-class="{active: $ctrl.fav}">
-                    Favorito
-                </button>
+                <div>
+                    <small>Fecha de publicación:</small>
+                    <strong>{{ ::$ctrl.product.published_date | date : 'd MMMM yyyy'}}</strong>
+                    <br/>
+                    <small>Estado del producto (en venta / vendido):</small>
+                    <strong>{{ ::$ctrl.product.state}}</strong>
+
+                </div>
+                <br/>
+                <div>
+                    <button ng-click=$ctrl.makeFavorite()
+                            ng-class="{active: $ctrl.fav}">
+                        Favorito
+                    </button>
+                </div>
+
             </div>
 
         </div>
@@ -40,14 +52,6 @@
 
                     <h4>{{ ::$ctrl.product.price | currency: "€"}}</h4>
                     <p ng-bind-html="$ctrl.description"></p>
-                </div>
-                <div>
-                    Fecha de publicación
-                    <strong>{{ ::$ctrl.product.published_date | date : 'd MMMM yyyy'}}</strong>
-                    <br/>
-                    Estado del producto (en venta / vendido):
-                    <strong>{{ ::$ctrl.product.state}}</strong>
-
                 </div>
 
             </div>
