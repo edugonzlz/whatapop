@@ -1,19 +1,22 @@
 /**
  * Created by Edu on 13/6/16.
  */
-angular.module("whatapop")
-    .service("CategoryService", function ($http, Settings) {
+var CategoryService = function ($http, Settings) {
 
-        this.getCategories = function () {
+    this.getCategories = function () {
 
-            return $http.get(Settings.urlServidor + Settings.endpointCategories);
+        return $http.get(Settings.urlServer + Settings.endpointCategories);
 
-        };
+    };
 
-        this.getCategory = function (categoryId) {
+    this.getCategory = function (categoryId) {
 
-            return $http.get(Settings.urlServidor + Settings.endpointCategories + categoryId);
+        return $http.get(Settings.urlServer + Settings.endpointCategories + categoryId);
 
-        };
+    };
 
-    });
+};
+
+CategoryService.$inject = [ "$http", "Settings"];
+
+angular.module("whatapop").service("CategoryService", CategoryService);

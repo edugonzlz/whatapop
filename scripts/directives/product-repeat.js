@@ -1,23 +1,26 @@
 /**
  * Created by Edu on 10/6/16.
  */
-angular.module("whatapop")
-    .directive("productRepeat", function (ProductService) {
-        
-        return {
+var productRepeat = function (ProductService) {
 
-            restrict: "AE",
+    return {
 
-            templateUrl: "views/product-repeat.html",
+        restrict: "AE",
 
-            scope: {
-                product: "<"
-            },
+        templateUrl: "views/product-repeat.html",
 
-            link: function (scope) {
+        scope: {
+            product: "<"
+        },
 
-                //Implementar el click a la vista general de producto?
-                scope.getImageUrl = ProductService.getImageUrl;
-            }
-        };
-    });
+        link: function (scope) {
+
+            //Implementar el click a la vista general de producto?
+            scope.getImageUrl = ProductService.getImageUrl;
+        }
+    };
+};
+
+productRepeat.$inject = ["ProductService"];
+
+angular.module("whatapop").directive("productRepeat", productRepeat);

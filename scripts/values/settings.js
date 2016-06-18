@@ -3,7 +3,7 @@
  */
 angular.module("whatapop")
     .value("Settings", {
-        urlServidor: "http://localhost:8000",
+        urlServer: "http://localhost:8000",
         endpointProducts: "/api/products",
         endpointCategories: "/api/categories",
         endpointUsers: "/api/users",

@@ -26,9 +26,7 @@ angular.module("whatapop")
                 });
 
             //Recuperamos el color del favorito
-            var id = productId;
-            self.fav = localStorage.getItem(id);
-            console.log(self.fav);
+            self.favColor = localStorage.getItem(productId);
 
         };
 
@@ -45,14 +43,12 @@ angular.module("whatapop")
                 if (fav === "fav"){
                     //Si ya era favvorito Eliminamos favorito
                     localStorage.removeItem(id);
-                    self.fav = false;
-                    console.log(localStorage.getItem(id));
+                    self.favColor = false;
                 }
                 if (fav !== "fav"){
                     //Si no es favorito lo guardamos como favorito
                     localStorage.setItem(id, "fav");
-                    self.fav = true;
-                    console.log(localStorage.getItem(id));
+                    self.favColor = true;
                 }
             }
         }

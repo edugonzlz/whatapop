@@ -25,10 +25,10 @@ angular.module("whatapop")
                 CategoryService.getCategories()
                     .then(function (response) {
                         self.categories = response.data;
-                    })
+                    });
             };
 
             self.getImageUrl = ProductService.getImageUrl;
-
+            
         }]
     });

@@ -14,7 +14,7 @@
     </div>
 
     <div>
-        <select name="" id="categorieSelector" ng-model="categoryFilter.category.name">
+        <select name="" id="categorySelector" ng-model="categoryFilter.category.name">
             <option value=""> Todas las Categorias </option>
             <option ng-repeat="category in $ctrl.categories"
                     value="{{ category.name }}">{{ category.name }}</option>
@@ -32,8 +32,8 @@
 
     <div>
         <input type="checkbox" ng-model="state.state"
-               ng-true-value="'selling'
-               "ng-false-value="''">
+               ng-true-value="'selling'"
+               ng-false-value="''">
         <span class="soloVentaText"> Solo los que esten en venta</span>
 
         </option>
