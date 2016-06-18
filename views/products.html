@@ -1,7 +1,10 @@
 <nav class="navigation-bar">
 
     <div>
-        <a ng-link="['Products']">Whatapop</a>
+        <a ng-link="['Products']"
+           ng class="appName">
+            Whatapop
+        </a>
 
     </div>
 
@@ -17,7 +20,7 @@
         <select name="" id="categorySelector" ng-model="categoryFilter.category.name">
             <option value=""> Todas las Categorias </option>
             <option ng-repeat="category in $ctrl.categories"
-                    value="{{ category.name }}">{{ category.name }}</option>
+                    value="{{ category.name }}">{{ ::category.name }}</option>
         </select>
     </div>
 
@@ -34,7 +37,7 @@
         <input type="checkbox" ng-model="state.state"
                ng-true-value="'selling'"
                ng-false-value="''">
-        <span class="soloVentaText"> Solo los que esten en venta</span>
+        <span class="soloVentaText"> Solo los que están en venta</span>
 
         </option>
     </div>

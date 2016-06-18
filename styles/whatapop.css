@@ -22,6 +22,12 @@
     margin-bottom: 100px;
 }
 
+.appName {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 30px;;
+}
+
+
 /*Pantalla de productos*/
 
 .fondoWeb {

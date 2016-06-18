@@ -1,7 +1,10 @@
 <nav class="navigation-bar">
 
     <div>
-        <a ng-link="['Products']">Whatapop</a>
+        <a ng-link="['Products']"
+           ng class="appName">
+            Whatapop
+        </a>
 
     </div>
 
@@ -59,14 +62,14 @@
             <div class="ficha">
 
                 <table>
-                    <thead>Publicado por</thead>
+                    <thead><small>Publicado por</small></thead>
                     <tr>
                         <td>
                             <img ng-src="{{ ::$ctrl.getImageUrl($ctrl.product.seller.avatar)}}"
                                  class="avatar"/>
                         </td>
                         <td class="nick">
-                            {{ ::$ctrl.product.seller.nick}}
+                            <strong>{{ ::$ctrl.product.seller.nick}}</strong>
                         </td>
                     </tr>
                 </table>
