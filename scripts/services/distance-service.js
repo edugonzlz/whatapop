@@ -14,7 +14,7 @@ angular.module("whatapop")
 
                     var usersInDistance = [];
 
-                    for (var product in products){
+                    for (let product of products){
                         
                         var id = product.seller.id;
                         //Obtenemos el usuario desde el producto y su posicion
@@ -29,7 +29,7 @@ angular.module("whatapop")
 
                                 //Probamos con una distancia larga, mas tarde recogemos de la vista
                                 if (distance < 200000){
-                                    usersInDistance.push(product.seller);
+                                    usersInDistance.push(user.id);
                                 }
                             })
                     }
