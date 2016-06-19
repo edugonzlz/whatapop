@@ -77,7 +77,7 @@
                     </tr>
                 </table>
 
-                <div class="sellerMap">
+                <div ng-if="$ctrl.selling">
                     <ui-gmap-google-map center="$ctrl.map.center"
                                         zoom="$ctrl.map.zoom"
                                         options="$ctrl.map.options"
