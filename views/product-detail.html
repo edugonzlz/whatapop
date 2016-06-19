@@ -21,11 +21,9 @@
 
             <div class="fichaFav">
                 <div>
+
                     <small>Fecha de publicación:</small>
                     <strong>{{ ::$ctrl.product.published_date | date : 'd MMMM yyyy'}}</strong>
-                    <br/>
-                    <small>Estado del producto (en venta / vendido):</small>
-                    <strong>{{ ::$ctrl.product.state}}</strong>
 
                 </div>
                 <br/>
@@ -44,16 +42,21 @@
             <div class="ficha">
 
                 <div>
-                    <h2>{{ ::$ctrl.product.name | OnlyName }}
+                    <h2>{{ ::$ctrl.product.name | OnlyName }}</h2>
 
-                    </h2>
+                    <h5>-- {{ ::$ctrl.product.name | OnlyInfo }} --</h5>
+
                     <small>{{ ::$ctrl.product.category.name }}</small>
 
-                    <h7>-- {{ ::$ctrl.product.name | OnlyInfo }} --</h7>
-                    </br>
-                    </br>
+                    <h4 class="price"
+                          ng-if="$ctrl.selling">
+                        {{ ::$ctrl.product.price | currency: "€" }}
+                    </h4>
+                    <h4 class="sold"
+                            ng-if="!$ctrl.selling">
+                        Vendido
+                    </h4>
 
-                    <h4 class="price">{{ ::$ctrl.product.price | currency: "€"}}</h4>
                     <p ng-bind-html="$ctrl.description"></p>
                 </div>
 

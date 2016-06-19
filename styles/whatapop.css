@@ -73,6 +73,11 @@
 .secundario {
     color: darkgray;
 }
+
+.sold {
+    color: red;
+    font-style: italic;
+}
 /*Pantalla de detalle de producto*/
 .ficha {
     width: 400px;

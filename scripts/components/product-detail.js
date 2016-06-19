@@ -23,10 +23,16 @@ angular.module("whatapop")
                     self.product = response.data;
                     self.description = $sce.trustAsHtml(self.product.description);
 
+                    if (self.product.state === "selling"){
+                        self.selling = true;
+                    }
+
                 });
 
             //Recuperamos el color del favorito
             self.favColor = localStorage.getItem(productId);
+
+
 
         };
 

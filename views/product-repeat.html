@@ -11,8 +11,13 @@
         <small class="secundario">{{ ::product.category.name }}</small>
         <br/>
 
-        <span class="price">
+        <span class="price"
+              ng-if="selling">
             {{ ::product.price | currency: "€" }}
+        </span>
+        <span class="sold"
+              ng-if="!selling">
+            Vendido
         </span>
         </br>
         <small class="secundario">Publicado hace {{ ::product.published_date | DaysAgo}}</small>

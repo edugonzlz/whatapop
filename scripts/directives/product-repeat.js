@@ -17,6 +17,10 @@ var productRepeat = function (ProductService) {
 
             //Implementar el click a la vista general de producto?
             scope.getImageUrl = ProductService.getImageUrl;
+
+            if (scope.product.state === "selling"){
+                scope.selling = true;
+            }
         }
     };
 };
