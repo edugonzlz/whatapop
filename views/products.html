@@ -18,7 +18,7 @@
     </div>
 
     <div>
-        <select name="" id="categorySelector" ng-model="categoryFilter.category.name">
+        <select name="categorySelector" id="categorySelector" ng-model="categoryFilter.category.name">
             <option value=""> Todas las Categorias </option>
             <option ng-repeat="category in $ctrl.categories"
                     value="{{ category.name }}">{{ ::category.name }}</option>
@@ -26,11 +26,10 @@
     </div>
 
     <div>
-        <select name="" id="orderSelector" ng-model="orderBy">
-            <option value=""> Ordenar por </option>
-            <option value="name">Nombre</option>
-            <option value="price">Precio</option>
-            <option value="published_date">Fecha de publicación</option>
+        <select name="orderSelector" id="orderSelector" ng-model="orderBy" ng-init="orderBy = 'published_date'">
+            <option value="published_date"> Ordenar por Fecha </option>
+            <option value="name"> Ordenar por Nombre</option>
+            <option value="price"> Ordenar por Precio</option>
         </select>
     </div>
 
