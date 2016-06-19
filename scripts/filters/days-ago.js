@@ -9,9 +9,6 @@ angular.module("whatapop")
             var dif = today - date;
 
             var days = Math.floor(dif / (1000 * 60 * 60 * 24));
-            console.log("anuncio: ", date);
-            console.log("today: ", today);
-            console.log("days: ", days);
 
             if (days <= 365){
                 var daysago = days + " días";
