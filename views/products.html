@@ -31,6 +31,12 @@
         </select>
     </div>
 
+    <div>
+        <button ng-click="$ctrl.print()">
+            A menos de 5km
+        </button>
+    </div>
+
 </nav>
 
 <div class="fondoWeb">
@@ -40,6 +46,7 @@
                     | filter: categoryFilter
                     | orderBy: orderBy"
                     product="product"
+                    productsInDistance="productsInDistance"
                     class="productBox"
                     ng-link="['ProductDetail', { id: product.id }]">
 

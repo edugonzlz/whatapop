@@ -22,7 +22,8 @@ angular.module("whatapop")
                         .then(function (response) {
                             self.products = response.data;
 
-                            self.distanceForProducts(self.products);
+                            self.productsInDistance = [];
+                            self.distanceForProducts(self.products)
 
                         });
 
@@ -31,17 +32,23 @@ angular.module("whatapop")
                             self.categories = response.data;
 
                         });
-
-
                 };
 
                 self.getImageUrl = ProductService.getImageUrl;
+
+                self.print = function () {
+                    // self.productsInDistance = [];
+                    // self.distanceForProducts(self.products)
+                    console.log("a ver: ", self.productsInDistance);
+                };
 
                 self.distanceForProducts = function (products) {
                     async.each(products, function (product, callback) {
                         DistanceService.distanceFromProduct(product)
                             .then(function (meters) {
                                 if (meters < 5000){
+
+                                    self.productsInDistance.push(product);
                                     console.log(product.name + " esta a metros: " + meters);
                                 }
                                 callback();
@@ -50,6 +57,7 @@ angular.module("whatapop")
                         if (err){
                             return console.log("Algo ha fallado calculando distancias", err);
                         } else {
+                            console.log("productos en la distancia", self.productsInDistance);
                             return console.log("Todo bien calculando distancias");
                         }
                     })

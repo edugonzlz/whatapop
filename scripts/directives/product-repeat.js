@@ -2,7 +2,7 @@
  * Created by Edu on 10/6/16.
  */
 angular.module("whatapop")
-    .directive("productRepeat", function (ProductService) {
+    .directive("productRepeat", function (ProductService, DistanceService) {
         
         return {
 
@@ -11,13 +11,26 @@ angular.module("whatapop")
             templateUrl: "views/product-repeat.html",
 
             scope: {
-                product: "<"
+                product: "<",
+                productsInDistance: "<"
             },
 
             link: function (scope) {
 
                 //Implementar el click a la vista general de producto?
                 scope.getImageUrl = ProductService.getImageUrl;
+
+                scope.calculateDistance = function(){
+
+                    console.log("Calculando distancia");
+
+                    DistanceService.distanceFromProduct(scope.product)
+                        .then(function (meters) {
+                            scope.distance = meters;
+                            scope.apply();
+                        });
+                };
+
             }
         };
     });
