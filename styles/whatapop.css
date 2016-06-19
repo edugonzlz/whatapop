@@ -86,3 +86,8 @@
     border-radius: 20px;
     border: 1px solid black;
 }
+
+.distanceButton {
+    background-color: yellow;
+    color: #99cfe7;
+}

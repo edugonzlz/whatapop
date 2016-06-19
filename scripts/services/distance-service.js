@@ -26,8 +26,6 @@ angular.module("whatapop")
                                 okSellers.push(seller.id);
                             }
                             
-                            console.log("nS: ", okSellers);
-                            
                             return okSellers;
 
                         }, []);
