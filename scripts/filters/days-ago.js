@@ -18,6 +18,6 @@ angular.module("whatapop")
                 daysago = "mas de un año"
             }
 
-            return daysago;
+            return "Publicado hace " + daysago;
         }
     });
