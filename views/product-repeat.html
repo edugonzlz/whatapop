@@ -8,12 +8,15 @@
 
         <strong>{{ ::product.name | OnlyName }}</strong>
         <br/>
-        <small>{{ ::product.category.name }}</small>
+        <small class="secundario">{{ ::product.category.name }}</small>
         <br/>
 
         <span class="price">
             {{ ::product.price | currency: "€" }}
         </span>
+        </br>
+        <small class="secundario">Publicado hace {{ ::product.published_date | DaysAgo}}</small>
+
 
     </div>
 </div>
