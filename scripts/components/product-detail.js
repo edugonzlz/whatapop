@@ -10,9 +10,14 @@ angular.module("whatapop")
 
         templateUrl: "views/product-detail.html",
 
-        controller:["ProductService", "$sce",  function (ProductService, $sce) {
+        controller:["ProductService", "$sce", "LocService",  function (ProductService, $sce, LocService) {
 
             var self = this;
+
+            var location = {
+                latitude: 10,
+                longitude: 10
+            };
 
             self.$routerOnActivate = function (next) {
 
@@ -23,15 +28,35 @@ angular.module("whatapop")
                         self.product = response.data;
                         self.description = $sce.trustAsHtml(self.product.description);
 
+                        //Cargamos el estado del producto para decidir pintar el precio
                         if (self.product.state === "selling"){
                             self.selling = true;
                         }
+
+                        LocService.productLocation(self.product)
+                            .then(function (productLocation) {
+                                location = {
+                                    latitude: productLocation.latitude,
+                                    longitude: productLocation.longitude
+                                };
+
+                                self.map = { center: {
+                                    latitude: location.latitude,
+                                    longitude: location.longitude }
+                                };
+                                self.marker = {
+                                    id: 1,
+                                    coords: {
+                                        latitude: location.latitude,
+                                        longitude: location.longitude }
+                                };
+                            });
 
                     });
 
                 //Recuperamos el color del favorito
                 self.favColor = localStorage.getItem(productId);
-                
+
             };
 
             self.getImageUrl = ProductService.getImageUrl;
@@ -55,7 +80,26 @@ angular.module("whatapop")
                         self.favColor = true;
                     }
                 }
-            }
+            };
 
+            self.map = { center: {
+                latitude: location.latitude,
+                longitude: location.longitude },
+                zoom: 15,
+                options : {
+                    scrollwheel: false,
+                    draggable: false},
+                control:{}
+            };
+            self.marker = {
+                id: 1,
+                coords: {
+                    latitude: location.latitude,
+                    longitude: location.longitude
+                },
+                options: {
+                    draggable: false
+                }
+            };
         }]
     });

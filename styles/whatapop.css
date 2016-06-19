@@ -133,3 +133,7 @@
 .favButton {
     background: #FEEB32;
 }
+
+.angular-google-map-container {
+    height: 200px;
+}

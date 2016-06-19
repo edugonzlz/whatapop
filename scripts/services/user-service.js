@@ -11,7 +11,7 @@ var UserService = function ($http, Settings) {
 
     this.getUserById = function (userId) {
 
-        return $http.get(Settings.urlServidor + Settings.endpointUsers + "/" + userId);
+        return $http.get(Settings.urlServer + Settings.endpointUsers + "/" + userId);
 
     };
 

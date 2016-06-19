@@ -49,11 +49,11 @@
                     <small>{{ ::$ctrl.product.category.name }}</small>
 
                     <h4 class="price"
-                          ng-if="$ctrl.selling">
+                        ng-if="$ctrl.selling">
                         {{ ::$ctrl.product.price | currency: "€" }}
                     </h4>
                     <h4 class="sold"
-                            ng-if="!$ctrl.selling">
+                        ng-if="!$ctrl.selling">
                         Vendido
                     </h4>
 
@@ -76,6 +76,20 @@
                         </td>
                     </tr>
                 </table>
+
+                <div class="sellerMap">
+                    <ui-gmap-google-map center="$ctrl.map.center"
+                                        zoom="$ctrl.map.zoom"
+                                        options="$ctrl.map.options"
+                                        control="$ctrl.map.control">
+                        <ui-gmap-marker
+                                idKey="$ctrl.marker.id"
+                                coords="$ctrl.marker.coords"
+                                options="$ctrl.marker.options">
+                        </ui-gmap-marker>
+                    </ui-gmap-google-map>
+
+                </div>
 
             </div>
         </div>

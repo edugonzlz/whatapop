@@ -32,14 +32,20 @@ var LocService = function (UserService, $q) {
         };
 
         this.productLocation = function(product){
+
+            var defer = $q.defer();
+
             UserService.getUserById(product.seller.id)
                 .then(function (response) {
 
                     var user = response.data;
 
-                    return ({"latitude": user.latitude,
+                    defer.resolve ({"latitude": user.latitude,
                         "longitude": user.longitude });
-                })
+                });
+
+            return defer.promise;
+
         };
 
         this.userLocation = function (user) {

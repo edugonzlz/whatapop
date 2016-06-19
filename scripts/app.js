@@ -5,7 +5,8 @@
 angular.module("whatapop", [
     "ngComponentRouter",
     "dahr.ng-image-picker",
-    "dahr.ng-haversine"
+    "dahr.ng-haversine",
+    "uiGmapgoogle-maps"
 ]);
 
 angular.module("whatapop")
