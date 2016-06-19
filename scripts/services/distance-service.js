@@ -4,6 +4,7 @@
 angular.module("whatapop")
     .service("DistanceService", function (UserService, LocService, $haversine) {
 
+        //Pasamos un producto y nos dice a que distancia esta de nosotros
         this.distanceFromProduct = function (product) {
             
             return new Promise (function (resolve, reject) {
@@ -28,28 +29,31 @@ angular.module("whatapop")
 
         };
 
-        this.distanceForProducts = function (products) {
-
-            var productsNearly = [];
-
-            async.each(products, function (product, callback) {
-                distanceFromProduct(product)
-                    .then(function (meters) {
-                        if (meters < 5000){
-                            console.log(product.name + " esta a metros: " + meters);
-                            productsNearly.push(product);
-                        }
-                        callback();
-                    })
-            },function (err) {
-                if (err){
-                    return console.log("Algo ha fallado calculando distancias", err);
-                } else {
-                    console.log("Todo bien calculando distancias")
-                    return productsNearly;
-                }
-            })
-        };
+        // Pasamos un array de productos
+        // y nos devuelve un array con los que estan a menos de 5km
+        // NO FUNCIONA
+        // this.distanceForProducts = function (products) {
+        //
+        //     var productsNearly = [];
+        //
+        //     async.each(products, function (product, callback) {
+        //         this.distanceFromProduct(product)
+        //             .then(function (meters) {
+        //                 if (meters < 5000){
+        //                     console.log(product.name + " esta a metros: " + meters);
+        //                     productsNearly.push(product);
+        //                 }
+        //                 callback();
+        //             })
+        //     },function (err) {
+        //         if (err){
+        //             return console.log("Algo ha fallado calculando distancias", err);
+        //         } else {
+        //             console.log("Todo bien calculando distancias", productsNearly)
+        //             return productsNearly;
+        //         }
+        //     })
+        // };
 
         this.productLocation = function(product){
 

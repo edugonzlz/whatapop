@@ -22,8 +22,10 @@ angular.module("whatapop")
                         .then(function (response) {
                             self.products = response.data;
 
+                            // LLamamos a la funcion que calcula la distancia
+                            // para nuestros productos
                             self.productsInDistance = [];
-                            self.distanceForProducts(self.products)
+                            self.distanceForProducts(self.products);
 
                         });
 
@@ -35,19 +37,15 @@ angular.module("whatapop")
                 };
 
                 self.getImageUrl = ProductService.getImageUrl;
-
-                self.print = function () {
-                    // self.productsInDistance = [];
-                    // self.distanceForProducts(self.products)
-                    console.log("a ver: ", self.productsInDistance);
-                };
-
+                
+                
+                //Con este funcion obtenemos un array con los productos
+                //que esta a menos de 5km
                 self.distanceForProducts = function (products) {
                     async.each(products, function (product, callback) {
                         DistanceService.distanceFromProduct(product)
                             .then(function (meters) {
                                 if (meters < 5000){
-
                                     self.productsInDistance.push(product);
                                     console.log(product.name + " esta a metros: " + meters);
                                 }
