@@ -31,6 +31,12 @@
         </select>
     </div>
 
+    <div>
+        <button ng-click="$ctrl.distanceFilter">
+            5km
+        </button>
+    </div>
+
 </nav>
 
 <div class="fondoWeb">
@@ -38,7 +44,8 @@
     <product-repeat ng-repeat="product in $ctrl.products
                     | filter: search
                     | filter: categoryFilter
-                    | orderBy: orderBy"
+                    | orderBy: orderBy
+                    | filter: $ctrl.nearlyProducts"
                     product="product"
                     class="productBox"
                     ng-link="['ProductDetail', { id: product.id }]">

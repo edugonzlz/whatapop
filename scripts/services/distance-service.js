@@ -2,79 +2,41 @@
  * Created by Edu on 17/6/16.
  */
 angular.module("whatapop")
-    .service("DistanceService", function (UserService, LocService, $haversine) {
+    .service("DistanceService", function (UserService, LocService, $haversine, $q) {
+        
+        this.nearlySellersIds = function () {
 
-        //Pasamos un producto y nos dice a que distancia esta de nosotros
-        this.distanceFromProduct = function (product) {
+            var defer = $q.defer();
             
-            return new Promise (function (resolve, reject) {
-                //Obtenemos nuestra posicion
-                LocService.getLoc()
-                    .then(function (mylocation) {
+            LocService.myLocation()
+                .then(function (mylocation) {
 
-                        UserService.getUserById(product.seller.id)
-                            .then(function (response) {
+                    //Quiero un array de IDs de  sellers cercanos
 
-                                var user = response.data;
+                    UserService.getUsers().then(function (response) {
 
-                                var userLoc = {"latitude": user.latitude,
-                                    "longitude": user.longitude };
+                        var sellers = response.data;
 
-                                return resolve ($haversine.distance(mylocation, userLoc));
-                            });
+                        var nearlySellers = sellers.reduce(function (okSellers, seller) {
 
+                            var sellerLocation = {"latitude": seller.latitude,
+                                "longitude": seller.longitude };
+
+                            if ($haversine.distance(sellerLocation, mylocation)< 5000){
+                                okSellers.push(seller.id);
+                            }
+                            
+                            console.log("nS: ", okSellers);
+                            
+                            return okSellers;
+
+                        }, []);
+                        
+                        defer.resolve (nearlySellers);
                     });
-            });
+                });
             
-
-        };
-
-        // Pasamos un array de productos
-        // y nos devuelve un array con los que estan a menos de 5km
-        // NO FUNCIONA
-        // this.distanceForProducts = function (products) {
-        //
-        //     var productsNearly = [];
-        //
-        //     async.each(products, function (product, callback) {
-        //         this.distanceFromProduct(product)
-        //             .then(function (meters) {
-        //                 if (meters < 5000){
-        //                     console.log(product.name + " esta a metros: " + meters);
-        //                     productsNearly.push(product);
-        //                 }
-        //                 callback();
-        //             })
-        //     },function (err) {
-        //         if (err){
-        //             return console.log("Algo ha fallado calculando distancias", err);
-        //         } else {
-        //             console.log("Todo bien calculando distancias", productsNearly)
-        //             return productsNearly;
-        //         }
-        //     })
-        // };
-
-        this.productLocation = function(product){
-
-                UserService.getUserById(product.seller.id)
-                    .then(function (response) {
-
-                        var user = response.data;
-
-                        return resolve ({"latitude": user.latitude,
-                            "longitude": user.longitude });
-                    })
+            return defer.promise;
         };
         
-        this.userLocation = function (user) {
-            
-            return {"latitude": user.latitude,
-                "longitude": user.longitude };
-        };
-        
-        this.distanceTwoPoints = function (position1, position2) {
-            
-            return $haversine.distance(position1, position2);
-        };
     });

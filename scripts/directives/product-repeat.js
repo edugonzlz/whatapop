@@ -11,7 +11,7 @@ angular.module("whatapop")
             templateUrl: "views/product-repeat.html",
 
             scope: {
-                product: "<",
+                product: "<"
             },
 
             link: function (scope) {

@@ -10,8 +10,8 @@ angular.module("whatapop")
 
         templateUrl: "views/products.html",
 
-        controller: ["ProductService", "CategoryService", "DistanceService",
-            function (ProductService, CategoryService, DistanceService) {
+        controller: ["ProductService", "CategoryService", "DistanceService", "$filter",
+            function (ProductService, CategoryService, DistanceService, $filter) {
 
                 var self = this;
 
@@ -22,13 +22,19 @@ angular.module("whatapop")
                         .then(function (response) {
                             self.products = response.data;
 
-                            // LLamamos a la funcion que calcula la distancia
-                            // para nuestros productos
-                            self.productsInDistance = [];
-                            self.distanceForProducts(self.products);
+                            DistanceService.nearlySellersIds()
+                                .then(function (nearlySellersIds) {
 
+                                    console.log("ids: ", nearlySellersIds);
+
+                                    self.nearlyProducts = $filter("filter")(self.products, function (product) {
+                                        return nearlySellersIds.indexOf(product.seller.id) > -1;
+                                    });
+
+                                    console.log("prods: ", self.nearlyProducts);
+                                });
                         });
-
+    
                     CategoryService.getCategories()
                         .then(function (response) {
                             self.categories = response.data;
@@ -37,29 +43,6 @@ angular.module("whatapop")
                 };
 
                 self.getImageUrl = ProductService.getImageUrl;
-                
-                
-                //Con este funcion obtenemos un array con los productos
-                //que esta a menos de 5km
-                self.distanceForProducts = function (products) {
-                    async.each(products, function (product, callback) {
-                        DistanceService.distanceFromProduct(product)
-                            .then(function (meters) {
-                                if (meters < 5000){
-                                    self.productsInDistance.push(product);
-                                    console.log(product.name + " esta a metros: " + meters);
-                                }
-                                callback();
-                            })
-                    },function (err) {
-                        if (err){
-                            return console.log("Algo ha fallado calculando distancias", err);
-                        } else {
-                            console.log("productos en la distancia", self.productsInDistance);
-                            return console.log("Todo bien calculando distancias");
-                        }
-                    })
-                };
-                
+
             }]
     });
