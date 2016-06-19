@@ -6,7 +6,8 @@
   "scripts": {
     "sparrest": "node ./node_modules/node-sparrest/node-sparrest.js",
     "lite": "lite-server",
-    "start": "concurrently 'npm run sparrest' 'npm run lite'"  },
+    "start": "concurrently 'npm run sparrest' 'npm run lite'"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/edugonzlz/whatapop.git"
@@ -25,6 +26,8 @@
   "dependencies": {
     "@angular/router": "^0.2.0",
     "angular": "^1.5.6",
+    "async": "^2.0.0-rc.6",
+    "ng-haversine": "0.0.1",
     "ng-image-picker": "0.0.1",
     "skeleton-css": "^2.0.4"
   }

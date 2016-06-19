@@ -10,25 +10,57 @@ angular.module("whatapop")
 
         templateUrl: "views/products.html",
 
-        controller: ["ProductService", "CategoryService", function (ProductService, CategoryService) {
-            
-            var self = this;
-            
-            //Nos suscribimos a un hook de inicio
-            self.$onInit = function () {
-                
-                ProductService.getProducts()
-                    .then(function (response) {
-                       self.products = response.data;
-                    });
-                
-                CategoryService.getCategories()
-                    .then(function (response) {
-                        self.categories = response.data;
-                    });
-            };
+        controller: ["ProductService", "CategoryService", "DistanceService", "$filter",
+            function (ProductService, CategoryService, DistanceService, $filter) {
 
-            self.getImageUrl = ProductService.getImageUrl;
-            
-        }]
+                var self = this;
+                var cachedProducts;
+                var nearlyProducts;
+
+                //Nos suscribimos a un hook de inicio
+                self.$onInit = function () {
+
+                    ProductService.getProducts()
+                        .then(function (response) {
+
+                            //Cacheamos los productos para 
+                            // poder sobreescribir los productos cercanos mas adelante
+                            cachedProducts = response.data;
+                            self.products = cachedProducts;
+
+                            DistanceService.nearlySellersIds()
+                                .then(function (nearlySellersIds) {
+
+                                    nearlyProducts = $filter("filter")(cachedProducts, function (product) {
+                                        return nearlySellersIds.indexOf(product.seller.id) > -1;
+                                    });
+
+                                    //Cuando tenemos los id de los vendedores cercanos activamos el boton
+                                    //Ademas lo cambiamos a false para no pintarlo
+                                    self.buttonActivate = true;
+                                    self.buttonState = false;
+
+                                });
+                        });
+
+                    CategoryService.getCategories()
+                        .then(function (response) {
+                            self.categories = response.data;
+
+                        });
+                };
+
+                self.getImageUrl = ProductService.getImageUrl;
+
+                self.distanceFilter = function () {
+
+                    if (self.buttonState === false){
+                        self.products = nearlyProducts;
+                        self.buttonState = true;
+                    } else if (self.buttonState === true){
+                        self.products = cachedProducts;
+                        self.buttonState = false;
+                    }
+                }
+            }]
     });

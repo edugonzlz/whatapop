@@ -20,6 +20,9 @@ var productRepeat = function (ProductService) {
 
             if (scope.product.state === "selling"){
                 scope.selling = true;
+                //Implementar el click a la vista general de producto?
+                scope.getImageUrl = ProductService.getImageUrl;
+
             }
         }
     };

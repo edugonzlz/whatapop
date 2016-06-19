@@ -4,7 +4,8 @@
 
 angular.module("whatapop", [
     "ngComponentRouter",
-    "dahr.ng-image-picker"
+    "dahr.ng-image-picker",
+    "dahr.ng-haversine"
 ]);
 
 angular.module("whatapop")
