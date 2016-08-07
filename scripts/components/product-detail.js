@@ -14,9 +14,34 @@ angular.module("whatapop")
 
             var self = this;
 
-            var location = {
-                latitude: 10,
-                longitude: 10
+            var location = {};
+            
+            self.$onInit = function () {
+
+                self.location = {
+                    latitude: 10,
+                    longitude: 10
+                };
+
+                self.map = { center: {
+                    latitude: location.latitude,
+                    longitude: location.longitude },
+                    zoom: 15,
+                    options : {
+                        scrollwheel: false,
+                        draggable: false},
+                    control:{}
+                };
+                self.marker = {
+                    id: 1,
+                    coords: {
+                        latitude: location.latitude,
+                        longitude: location.longitude
+                    },
+                    options: {
+                        draggable: false
+                    }
+                };
             };
 
             self.$routerOnActivate = function (next) {
@@ -82,24 +107,5 @@ angular.module("whatapop")
                 }
             };
 
-            self.map = { center: {
-                latitude: location.latitude,
-                longitude: location.longitude },
-                zoom: 15,
-                options : {
-                    scrollwheel: false,
-                    draggable: false},
-                control:{}
-            };
-            self.marker = {
-                id: 1,
-                coords: {
-                    latitude: location.latitude,
-                    longitude: location.longitude
-                },
-                options: {
-                    draggable: false
-                }
-            };
         }]
     });
