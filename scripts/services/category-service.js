@@ -9,9 +9,9 @@ var CategoryService = function ($http, Settings) {
 
     };
 
-    this.getCategory = function (categoryId) {
+    this.getCategoryById = function (categoryId) {
 
-        return $http.get(Settings.urlServidor + Settings.endpointCategories + "/" + categoryId);
+        return $http.get(Settings.urlServer + Settings.endpointCategories + "/" + categoryId);
 
     };
 
