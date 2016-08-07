@@ -5,8 +5,15 @@ angular.module("whatapop")
     .filter("OnlyName", function () {
         return function (nameComplete) {
 
-            var name = nameComplete.split("[");
+                console.log("onlyname: " + nameComplete);
+            if (nameComplete !== "undefined") {
 
+                var name = nameComplete.split("[");
+
+            } else {
+
+                name = [];
+            }
             return name[0];
         }
     });
