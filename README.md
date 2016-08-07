@@ -19,3 +19,7 @@ El detalle de cada producto muestra la localizacion del vendedor.
 
 
 Realizada para el módulo de Angular.js en el III Master Bootcamp de Keepcoding.
+
+![alt text](whatapop.png)
+![alt text](whatapop-articulo.png)
+
