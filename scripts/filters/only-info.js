@@ -5,10 +5,11 @@ angular.module("whatapop")
     .filter("OnlyInfo", function () {
         return function (nameComplete) {
 
-            if (nameComplete !== "undefined") {
+            if (nameComplete !== undefined) {
 
                 var split = nameComplete.split("[");
                 var extra = split[1];
+                
             } else {
 
                 extra = "";

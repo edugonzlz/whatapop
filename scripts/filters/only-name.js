@@ -5,8 +5,7 @@ angular.module("whatapop")
     .filter("OnlyName", function () {
         return function (nameComplete) {
 
-                console.log("onlyname: " + nameComplete);
-            if (nameComplete !== "undefined") {
+            if (nameComplete !== undefined) {
 
                 var name = nameComplete.split("[");
 
@@ -14,6 +13,7 @@ angular.module("whatapop")
 
                 name = [];
             }
+
             return name[0];
         }
     });
