@@ -1,7 +1,7 @@
 # Created by https://www.gitignore.io/api/osx,node,webstorm
 
-api
-static
+#api
+#static
 
 ### OSX ###
 *.DS_Store
